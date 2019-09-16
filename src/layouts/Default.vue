@@ -12,6 +12,9 @@
       </nav>
     </header>
     <slot />
+    <footer class="container flex justify-center items-end">
+      <div>Tous droits réservés &copy; Frédérick Tondreau</div>
+    </footer>
   </div>
 </template>
 

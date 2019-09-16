@@ -6,7 +6,11 @@ module.exports = {
     container: {
       center: true
     },
-    extend: {}
+    extend: {
+      colors: {
+        crema: "#D6C5A7"
+      }
+    }
   },
   variants: {},
   plugins: []
