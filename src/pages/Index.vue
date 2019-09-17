@@ -2,7 +2,7 @@
   <Layout>
     <section id="listing" class="lg:flex lg:justify-end bg-crema py-24">
       <div>
-        <h2>Propriétés Récentes</h2>
+        <h2 class="text-4xl font-thin">Propriétés Récentes</h2>
         <a href="/proprietes">Voir plus</a>
       </div>
       <div

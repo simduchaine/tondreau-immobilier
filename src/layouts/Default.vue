@@ -12,8 +12,15 @@
       </nav>
     </header>
     <slot />
-    <footer class="container flex justify-center items-end">
-      <div>Tous droits réservés &copy; Frédérick Tondreau</div>
+    <footer class="container flex flex-col justify-around items-center mt-16 mb-4">
+      <g-image src="~/assets/img/logo.png" width="150" />
+      <div class="mt-12">
+        <a href="tel:+14186553557">(418) 655-3557</a>
+      </div>
+      <div>
+        <a href="mailto:info@tondreauimmobilier.com">info@tondreauimmobilier.com</a>
+      </div>
+      <div class="mt-12 text-gray-600">Tous droits réservés &copy; Frédérick Tondreau</div>
     </footer>
   </div>
 </template>
