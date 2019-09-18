@@ -19,6 +19,7 @@
             <span v-html="edge.node.building.BathroomTotal"></span> salles de bain
           </div>
         </div>
+        <a class="absolute bottom-0 right-0 bg-white text-black p-2" :href="edge.node.path">--></a>
       </div>
     </section>
   </Layout>

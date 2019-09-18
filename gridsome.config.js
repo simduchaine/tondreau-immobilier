@@ -6,6 +6,9 @@
 
 module.exports = {
   siteName: "Tondreau Immobilier",
+  templates: {
+    RealEstate: "/proprietes/:id"
+  },
   plugins: [
     {
       use: "gridsome-plugin-tailwindcss",

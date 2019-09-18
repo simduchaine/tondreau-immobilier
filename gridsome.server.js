@@ -9,7 +9,7 @@ const axios = require("axios");
 const querystring = require("querystring");
 
 module.exports = function(api) {
-  api.loadSource(async store => {
+  api.loadSource(async actions => {
     const { data } = await axios.post(
       "https://api2.realtor.ca/Listing.svc/PropertySearch_Post",
       querystring.stringify({
@@ -20,13 +20,13 @@ module.exports = function(api) {
       })
     );
 
-    const contentType = store.addContentType({
+    const collection = actions.addCollection({
       typeName: "RealEstate",
-      route: "estate/:id"
+      route: "proprietes/:id"
     });
 
     for (const item of data.Results) {
-      contentType.addNode({
+      collection.addNode({
         id: item.Id,
         PhotoChangeDateUTC: item.PhotoChangeDateUTC,
         content: item.PublicRemarks,
