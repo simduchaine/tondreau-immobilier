@@ -1,5 +1,5 @@
 <template>
-  <div class="layout font-display">
+  <div class="layout font-display font-light">
     <header class="header container h-40 flex items-center justify-between">
       <g-link to="/">
         <g-image alt="Tondreau Immobilier Logo" src="~/assets/img/logo.png" width="135" />

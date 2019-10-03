@@ -1,25 +1,25 @@
 <template>
-  <Layout class="container">
-    <h1>Propriétés</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error doloremque omnis animi, eligendi magni a voluptatum, vitae, consequuntur rerum illum odit fugit assumenda rem dolores inventore iste reprehenderit maxime! Iusto.</p>
-    <div class="flex flex-wrap">
-      <div
-        class="relative text-white lg:w-1/3 p-2"
-        v-for="edge in $page.allEstate.edges"
-        :key="edge.node.id"
-      >
-        <g-image :src="edge.node.image" />
-        <div class="absolute bottom-0 px-6 py-6">
-          <div class="font-semibold" v-html="edge.node.price"></div>
-          <div class="address" v-html="edge.node.shortAddress"></div>
-          <div>
-            <span v-html="edge.node.building.Bedrooms"></span> chambres •
-            <span v-html="edge.node.building.BathroomTotal"></span> salles de bain
-          </div>
-        </div>
-        <a class="absolute bottom-0 right-0 bg-white text-black p-2" :href="edge.node.path">--></a>
+  <Layout>
+    <section class="container mt-20">
+      <div>{{ $page.allEstate.totalCount }} résultats</div>
+      <div class="flex flex-wrap mt-10">
+        <propertyCard
+          class="relative text-white font-normal lg:w-31 m-2"
+          v-for="edge in $page.allEstate.edges"
+          :key="edge.node.id"
+          :image="edge.node.image"
+          :address="edge.node.shortAddress"
+          :price="edge.node.price"
+          :bedrooms="edge.node.building.Bedrooms"
+          :bathrooms="edge.node.building.BathroomTotal"
+          :path="edge.node.path"
+        />
       </div>
-    </div>
+    </section>
+
+    <section class="mt-12">
+      <mapGL :allestate="$page.allEstate.edges"></mapGL>
+    </section>
   </Layout>
 </template>
 
@@ -32,6 +32,8 @@ query Estate {
         id
         PhotoChangeDateUTC
         shortAddress
+        longitude
+        latitude
         path
         price
         image
@@ -46,9 +48,19 @@ query Estate {
 </page-query>
 
 <script>
+import propertyCard from "~/components/propertyCard.vue";
+import mapGL from "~/components/map.vue";
+
 export default {
   metaInfo: {
     title: "Propriétés"
+  },
+  components: {
+    propertyCard,
+    mapGL
   }
 };
+
+//sortable vuejs : https://embed.plnkr.co/2WKv0I/
+// example 2: https://www.raymondcamden.com/2018/02/08/building-table-sorting-and-pagination-in-vuejs
 </script>

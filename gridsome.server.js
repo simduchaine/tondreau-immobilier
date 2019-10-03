@@ -16,7 +16,8 @@ module.exports = function(api) {
         individualID: 1944929,
         CultureId: 2,
         ApplicationId: 1,
-        PropertySearchTypeId: 1
+        PropertySearchTypeId: 1,
+        RecordsPerPage: 100
       })
     );
 
@@ -31,6 +32,8 @@ module.exports = function(api) {
         PhotoChangeDateUTC: item.PhotoChangeDateUTC,
         content: item.PublicRemarks,
         price: item.Property.Price,
+        longitude: item.Property.Address.Longitude,
+        latitude: item.Property.Address.Latitude,
         address: item.Property.Address.AddressText.replace("|", ", "),
         shortAddress: item.Property.Address.AddressText.substring(
           0,
@@ -41,9 +44,14 @@ module.exports = function(api) {
           BathroomTotal: item.Building.BathroomTotal,
           Bedrooms: item.Building.Bedrooms,
           SizeInterior: item.Building.SizeInterior,
-          StoriesTotal: item.Building.StoriesTotal,
-          Type: item.Building.Type
-        }
+          StoriesTotal: Math.round(parseInt(item.Building.StoriesTotal)),
+          Type: item.Building.Type,
+          Ownership: item.Property.OwnershipType
+        },
+        Land: {
+          SizeTotal: item.Land.SizeTotal
+        },
+        RelativeURLFr: item.RelativeURLFr
       });
     }
   });
