@@ -1,14 +1,15 @@
 <template>
   <Layout>
     <section class="container mt-20">
+      <h1 class="text-4xl font-thin mb-8">Propriétés</h1>
       <div>{{ $page.allEstate.totalCount }} résultats</div>
       <div class="flex flex-wrap mt-10">
         <propertyCard
-          class="relative text-white font-normal lg:w-31 m-2"
+          class="relative text-white font-normal w-full lg:w-31 m-2"
           v-for="edge in $page.allEstate.edges"
           :key="edge.node.id"
-          :image="edge.node.image"
-          :address="edge.node.shortAddress"
+          :image="edge.node.images[0]"
+          :address="edge.node.address"
           :price="edge.node.price"
           :bedrooms="edge.node.building.Bedrooms"
           :bathrooms="edge.node.building.BathroomTotal"
@@ -25,18 +26,17 @@
 
 <page-query>
 query Estate {
-  allEstate: allRealEstate(sortBy: "PhotoChangeDateUTC") {
+  allEstate: allRealEstate (order: ASC) {
     totalCount
     edges {
       node {
         id
-        PhotoChangeDateUTC
-        shortAddress
+        address
         longitude
         latitude
         path
         price
-        image
+        images
         building {
           Bedrooms
           BathroomTotal

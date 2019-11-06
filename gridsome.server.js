@@ -6,52 +6,60 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 const axios = require("axios");
-const querystring = require("querystring");
 
 module.exports = function(api) {
   api.loadSource(async actions => {
-    const { data } = await axios.post(
-      "https://api2.realtor.ca/Listing.svc/PropertySearch_Post",
-      querystring.stringify({
-        individualID: 1944929,
-        CultureId: 2,
-        ApplicationId: 1,
-        PropertySearchTypeId: 1,
-        RecordsPerPage: 100
-      })
+    const { data } = await axios.get(
+      "https://quebec-realtor-api.herokuapp.com/api/v1/data"
     );
+
+    /* const { images } = await axios.get(
+      "https://quebec-realtor-api.herokuapp.com/api/v1/gallery"
+    ); */
 
     const collection = actions.addCollection({
       typeName: "RealEstate",
       route: "proprietes/:id"
     });
 
-    for (const item of data.Results) {
+    /* const gallery = actions.addCollection({
+      typeName: "Gallery"
+    });
+
+    for (const image of images.results) {
+      gallery.addNode({
+        id: image.id,
+        photos: image.photos
+      });
+    } */
+
+    for (const item of data.results) {
       collection.addNode({
-        id: item.Id,
-        PhotoChangeDateUTC: item.PhotoChangeDateUTC,
-        content: item.PublicRemarks,
-        price: item.Property.Price,
-        longitude: item.Property.Address.Longitude,
-        latitude: item.Property.Address.Latitude,
-        address: item.Property.Address.AddressText.replace("|", ", "),
-        shortAddress: item.Property.Address.AddressText.substring(
-          0,
-          item.Property.Address.AddressText.indexOf("|")
-        ),
-        image: item.Property.Photo[0].HighResPath,
+        id: item.id,
+        content: item.description,
+        price: item.price,
+        longitude: item.longitude,
+        latitude: item.latitude,
+        address: item.streetAddress,
+        postalCode: item.postalCode,
+        locality: item.locality,
+        images: item.singleImg, //store.createReference(gallery, item.id)
         building: {
-          BathroomTotal: item.Building.BathroomTotal,
-          Bedrooms: item.Building.Bedrooms,
-          SizeInterior: item.Building.SizeInterior,
-          StoriesTotal: Math.round(parseInt(item.Building.StoriesTotal)),
-          Type: item.Building.Type,
-          Ownership: item.Property.OwnershipType
+          BathroomTotal: item.building.bathrooms,
+          Showerroms: item.building.showerrooms,
+          Bedrooms: item.building.bedrooms,
+          Rooms: item.building.rooms,
+          Year: item.building.constructionYear,
+          StoriesTotal: Math.round(parseInt(item.building.StoriesTotal)),
+          Type: item.type
         },
-        Land: {
-          SizeTotal: item.Land.SizeTotal
+        dimensions: {
+          SizeTotal: item.dimensions.totalArea,
+          privateArea: item.dimensions.privateArea,
+          depth: item.dimensions.depth,
+          width: item.dimensions.width
         },
-        RelativeURLFr: item.RelativeURLFr
+        URLFr: item.url
       });
     }
   });
