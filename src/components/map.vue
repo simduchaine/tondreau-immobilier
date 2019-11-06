@@ -3,12 +3,12 @@
 </template>
 
 <script>
-import mapboxgl from "mapbox-gl";
 require("../../node_modules/mapbox-gl/dist/mapbox-gl.css");
 export default {
   name: "MapGL",
   props: ["allestate", "isSingle", "long", "lat", "path", "address", "image"],
   mounted() {
+    window.mapboxgl = require("mapbox-gl");
     this.createMap();
   },
   methods: {
