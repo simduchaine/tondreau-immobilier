@@ -49,7 +49,9 @@
       </div>
     </section>
     <section>
-      <mapGL :allestate="$page.allEstate.edges"></mapGL>
+      <ClientOnly>
+        <mapGL :allestate="$page.allEstate.edges"></mapGL>
+      </ClientOnly>
     </section>
   </Layout>
 </template>

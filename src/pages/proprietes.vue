@@ -19,7 +19,9 @@
     </section>
 
     <section class="mt-12">
-      <mapGL :allestate="$page.allEstate.edges"></mapGL>
+      <ClientOnly>
+        <mapGL :allestate="$page.allEstate.edges"></mapGL>
+      </ClientOnly>
     </section>
   </Layout>
 </template>

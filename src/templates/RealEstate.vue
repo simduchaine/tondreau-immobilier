@@ -95,14 +95,16 @@
       </div>
     </div>
     <section>
-      <mapGL
-        :path="$page.realEstate.path"
-        :image="$page.realEstate.images[0]"
-        :address="$page.realEstate.address"
-        :long="$page.realEstate.longitude"
-        :lat="$page.realEstate.latitude"
-        :isSingle="true"
-      ></mapGL>
+      <ClientOnly>
+        <mapGL
+          :path="$page.realEstate.path"
+          :image="$page.realEstate.images[0]"
+          :address="$page.realEstate.address"
+          :long="$page.realEstate.longitude"
+          :lat="$page.realEstate.latitude"
+          :isSingle="true"
+        ></mapGL>
+      </ClientOnly>
     </section>
   </Layout>
 </template>
