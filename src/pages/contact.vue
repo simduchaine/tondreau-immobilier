@@ -2,6 +2,7 @@
   <Layout class="container">
     <h1 class="text-4xl font-thin mb-8 mt-20">Contactez-moi</h1>
     <form name="contact" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="contact" />
       <div class="inline-block w-1/2 h-10 px-4">
         <label class="block pb-2" for="name">Nom:</label>
         <input
