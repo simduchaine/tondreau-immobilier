@@ -7,11 +7,9 @@ require("typeface-work-sans");
 import DefaultLayout from "~/layouts/Default.vue";
 
 import VueAgile from "vue-agile";
-import mapboxgl from "mapbox-gl";
 
 export default function(Vue, { router, head, isClient }) {
   Vue.use(VueAgile);
-  Vue.use(mapboxgl);
   // Set default layout as a global component
   Vue.component("Layout", DefaultLayout);
 

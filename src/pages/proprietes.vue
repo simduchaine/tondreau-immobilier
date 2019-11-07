@@ -18,11 +18,11 @@
       </div>
     </section>
 
-    <section class="mt-12">
+    <!-- <section class="mt-12">
       <ClientOnly>
         <mapGL :allestate="$page.allEstate.edges"></mapGL>
       </ClientOnly>
-    </section>
+    </section>-->
   </Layout>
 </template>
 
@@ -51,15 +51,13 @@ query Estate {
 
 <script>
 import propertyCard from "~/components/propertyCard.vue";
-import mapGL from "~/components/map.vue";
 
 export default {
   metaInfo: {
     title: "Propriétés"
   },
   components: {
-    propertyCard,
-    mapGL
+    propertyCard
   }
 };
 

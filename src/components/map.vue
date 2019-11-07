@@ -8,11 +8,11 @@ export default {
   name: "MapGL",
   props: ["allestate", "isSingle", "long", "lat", "path", "address", "image"],
   mounted() {
-    window.mapboxgl = require("mapbox-gl");
     this.createMap();
   },
   methods: {
     createMap() {
+      let mapboxgl = require("mapbox-gl");
       if (this.isSingle) {
         mapboxgl.accessToken = process.env.GRIDSOME_MAPBOX_TOKEN;
         this.map = new mapboxgl.Map({
@@ -36,6 +36,7 @@ export default {
       }
     },
     addMarkers() {
+      let mapboxgl = require("mapbox-gl");
       if (this.isSingle) {
         // create a HTML element
         const markerEl = document.createElement("div");

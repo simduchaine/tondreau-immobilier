@@ -94,7 +94,7 @@
         </a>
       </div>
     </div>
-    <section>
+    <!-- <section>
       <ClientOnly>
         <mapGL
           :path="$page.realEstate.path"
@@ -105,7 +105,7 @@
           :isSingle="true"
         ></mapGL>
       </ClientOnly>
-    </section>
+    </section>-->
   </Layout>
 </template>
 
@@ -141,18 +141,12 @@ query Estate($id: ID!) {
 </page-query>
 
 <script>
-import mapGL from "~/components/map.vue";
-import { VueAgile } from "vue-agile";
-
 export default {
   metaInfo() {
     return {
       title: this.$page.realEstate.address
     };
   },
-  components: {
-    mapGL,
-    agile: VueAgile
-  }
+  components: {}
 };
 </script>
