@@ -6,11 +6,19 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 const axios = require("axios");
+const querystring = require("querystring");
 
 module.exports = function(api) {
   api.loadSource(async actions => {
-    const { data } = await axios.get(
-      "https://quebec-realtor-api.herokuapp.com/api/v1/data"
+    const { data } = await axios.post(
+      "https://api2.realtor.ca/Listing.svc/PropertySearch_Post",
+      querystring.stringify({
+        individualID: 1944929,
+        CultureId: 2,
+        ApplicationId: 1,
+        PropertySearchTypeId: 1,
+        RecordsPerPage: 100
+      })
     );
 
     /* const { images } = await axios.get(
@@ -33,33 +41,40 @@ module.exports = function(api) {
       });
     } */
 
-    for (const item of data.results) {
+    for (const item of data.Results) {
       collection.addNode({
-        id: item.id,
-        content: item.description,
-        price: item.price,
-        longitude: item.longitude,
-        latitude: item.latitude,
-        address: item.streetAddress,
-        postalCode: item.postalCode,
-        locality: item.locality,
-        images: item.singleImg, //store.createReference(gallery, item.id)
+        id: item.Id,
+        changeDate: item.PhotoChangeDateUTC,
+        content: item.PublicRemarks,
+        price: item.Property.Price,
+        longitude: item.Property.Address.Longitude,
+        latitude: item.Property.Address.Latitude,
+        address: item.Property.Address.AddressText.replace("|", ", "),
+        shortAddress: item.Property.Address.AddressText.substring(
+          0,
+          item.Property.Address.AddressText.indexOf("|")
+        ),
+        postalCode: item.PostalCode,
+        //locality: item.locality,
+        image: item.Property.Photo[0].HighResPath,
         building: {
-          BathroomTotal: item.building.bathrooms,
-          Showerroms: item.building.showerrooms,
-          Bedrooms: item.building.bedrooms,
-          Rooms: item.building.rooms,
-          Year: item.building.constructionYear,
-          StoriesTotal: Math.round(parseInt(item.building.StoriesTotal)),
-          Type: item.type
+          BathroomTotal: item.Building.BathroomTotal,
+          //Showerroms: item.building.showerrooms,
+          Bedrooms: item.Building.Bedrooms,
+          //Rooms: item.building.rooms,
+          //Year: item.building.constructionYear,
+          StoriesTotal: Math.round(parseInt(item.Building.StoriesTotal)),
+          Type: item.Building.Type,
+          Ownership: item.Property.OwnershipType
         },
         dimensions: {
-          SizeTotal: item.dimensions.totalArea,
-          privateArea: item.dimensions.privateArea,
-          depth: item.dimensions.depth,
-          width: item.dimensions.width
+          SizeTotal: item.Land.SizeTotal,
+          SizeInterior: item.Building.SizeInterior
+          //privateArea: item.dimensions.privateArea,
+          //depth: item.dimensions.depth,
+          //width: item.dimensions.width
         },
-        URLFr: item.url
+        URLFr: item.RelativeURLFr
       });
     }
   });

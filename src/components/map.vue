@@ -69,9 +69,9 @@ export default {
                   "<a href=" +
                     edge.node.path +
                     "><img src=" +
-                    edge.node.images[0] +
+                    edge.node.image +
                     " /><h3 class='font-display'>" +
-                    edge.node.address +
+                    edge.node.shortAddress +
                     "</h3></a>"
                 )
             )
