@@ -39,8 +39,8 @@
           class="relative text-white font-normal lg:w-2/5"
           v-for="edge in $page.allEstate.edges"
           :key="edge.node.id"
-          :image="edge.node.images[0]"
-          :address="edge.node.address"
+          :image="edge.node.image"
+          :address="edge.node.shortAddress"
           :price="edge.node.price"
           :bedrooms="edge.node.building.Bedrooms"
           :bathrooms="edge.node.building.BathroomTotal"
@@ -58,17 +58,17 @@
 
 <page-query>
 query Estate {
-  allEstate: allRealEstate(limit: 3, order: ASC) {
+  allEstate: allRealEstate(limit: 3, order: DESC, sortBy: "changeDate") {
     totalCount
     edges {
       node {
         id
-        address
+        shortAddress
         longitude
         latitude
         path
         price
-        images
+        image
         building {
           Bedrooms
           BathroomTotal

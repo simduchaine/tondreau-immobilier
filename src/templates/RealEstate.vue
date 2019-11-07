@@ -1,7 +1,7 @@
 <template>
   <Layout>
     <div class="max-w-3xl mx-auto pb-10/12 lg:pb-6/12 xl:pb-3/12 relative">
-      <g-image class="absolute h-full object-cover w-full" :src="$page.realEstate.images[0]" />
+      <g-image class="absolute h-full object-cover w-full" :src="$page.realEstate.image" />
     </div>
     <div class="bg-crema -mt-32 pt-24">
       <div
@@ -9,7 +9,7 @@
       >
         <div class="font-normal text-4xl" v-html="$page.realEstate.price" />
         <h1 class="text-3xl leading-tight pt-2">
-          <span v-html="$page.realEstate.address"></span>
+          <span v-html="$page.realEstate.shortAddress"></span>
           <br />
           <span v-html="$page.realEstate.postalCode"></span>
         </h1>
@@ -62,7 +62,8 @@
           </div>
           <div class="pb-10">
             <span class="block font-medium">Année de construction:</span>
-            <span v-html="$page.realEstate.building.Year"></span>
+            <span v-if="$page.realEstate.building.Year" v-html="$page.realEstate.building.Year"></span>
+            <span v-else>N/A</span>
           </div>
           <div class="pb-10">
             <span class="block font-medium">Surface utile:</span>
@@ -84,7 +85,7 @@
 
         <a
           class="inline-flex items-center bg-white py-2 px-4 my-24"
-          :href="$page.realEstate.URLFr"
+          :href="'https://www.realtor.ca/'+$page.realEstate.URLFr"
           target="_blank"
         >
           Plus d'infos
@@ -94,18 +95,18 @@
         </a>
       </div>
     </div>
-    <!-- <section>
+    <section>
       <ClientOnly>
         <mapGL
           :path="$page.realEstate.path"
-          :image="$page.realEstate.images[0]"
-          :address="$page.realEstate.address"
+          :image="$page.realEstate.image"
+          :address="$page.realEstate.shortAddress"
           :long="$page.realEstate.longitude"
           :lat="$page.realEstate.latitude"
           :isSingle="true"
         ></mapGL>
       </ClientOnly>
-    </section>-->
+    </section>
   </Layout>
 </template>
 
@@ -113,27 +114,21 @@
 query Estate($id: ID!) {
   realEstate(id: $id) {
     price
-    address
+    shortAddress
+    postalCode
     longitude
     latitude
-    postalCode
-    locality
     content
-    images
+    image
     building {
       Bedrooms
       BathroomTotal
-      Showerroms
-      Rooms
-      Year
       StoriesTotal
       Type
     }
     dimensions {
       SizeTotal
-      privateArea
-      depth
-      width
+      SizeInterior
     }
     URLFr
   }
@@ -141,12 +136,16 @@ query Estate($id: ID!) {
 </page-query>
 
 <script>
+import mapGL from "~/components/map.vue";
+
 export default {
   metaInfo() {
     return {
       title: this.$page.realEstate.address
     };
   },
-  components: {}
+  components: {
+    mapGL
+  }
 };
 </script>

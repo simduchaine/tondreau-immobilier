@@ -8,8 +8,8 @@
           class="relative text-white font-normal w-full lg:w-31 m-2"
           v-for="edge in $page.allEstate.edges"
           :key="edge.node.id"
-          :image="edge.node.images[0]"
-          :address="edge.node.address"
+          :image="edge.node.image"
+          :address="edge.node.shortAddress"
           :price="edge.node.price"
           :bedrooms="edge.node.building.Bedrooms"
           :bathrooms="edge.node.building.BathroomTotal"
@@ -18,27 +18,27 @@
       </div>
     </section>
 
-    <!-- <section class="mt-12">
+    <section class="mt-12">
       <ClientOnly>
         <mapGL :allestate="$page.allEstate.edges"></mapGL>
       </ClientOnly>
-    </section>-->
+    </section>
   </Layout>
 </template>
 
 <page-query>
 query Estate {
-  allEstate: allRealEstate (order: ASC) {
+  allEstate: allRealEstate (order: DESC, sortBy: "changeDate") {
     totalCount
     edges {
       node {
         id
-        address
+        shortAddress
         longitude
         latitude
         path
         price
-        images
+        image
         building {
           Bedrooms
           BathroomTotal
@@ -51,13 +51,15 @@ query Estate {
 
 <script>
 import propertyCard from "~/components/propertyCard.vue";
+import mapGL from "~/components/map.vue";
 
 export default {
   metaInfo: {
     title: "Propriétés"
   },
   components: {
-    propertyCard
+    propertyCard,
+    mapGL
   }
 };
 
