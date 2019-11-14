@@ -85,7 +85,13 @@ import mapGL from "~/components/map.vue";
 
 export default {
   metaInfo: {
-    title: "Accueil"
+    title: "Accueil",
+    meta: [
+      {
+        property: "og:image",
+        content: "~/assets/img/naomi-hebert-MP0bgaS_d1c-unsplash.jpg"
+      }
+    ]
   },
   components: {
     propertyCard,
