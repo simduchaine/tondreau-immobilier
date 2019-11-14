@@ -141,7 +141,29 @@ import mapGL from "~/components/map.vue";
 export default {
   metaInfo() {
     return {
-      title: this.$page.realEstate.address
+      title: this.$page.realEstate.shortAddress,
+      meta: [
+        {
+          name: "description",
+          content: this.$page.realEstate.content
+        },
+        {
+          property: "og:title",
+          content: this.$page.realEstate.shortAddress
+        },
+        {
+          name: "twitter:card",
+          content: $page.realEstate.image ? "summary_large_image" : "summary"
+        },
+        {
+          property: "og:description",
+          content: this.$page.realEstate.content
+        },
+        {
+          property: "og:image",
+          content: $page.realEstate.image || ""
+        }
+      ]
     };
   },
   components: {
