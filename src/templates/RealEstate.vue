@@ -163,7 +163,7 @@ export default {
         },
         {
           property: "og:image",
-          content: $page.realEstate.image || ""
+          content: this.$page.realEstate.image || ""
         }
       ]
     };
