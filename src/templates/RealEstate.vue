@@ -153,7 +153,9 @@ export default {
         },
         {
           name: "twitter:card",
-          content: $page.realEstate.image ? "summary_large_image" : "summary"
+          content: this.$page.realEstate.image
+            ? "summary_large_image"
+            : "summary"
         },
         {
           property: "og:description",
