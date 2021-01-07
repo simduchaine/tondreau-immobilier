@@ -5,9 +5,9 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: "Tondreau Immobilier",
+  siteName: "Frédérick Tondreau - Courtier Immobilier - Via Capitale Équipe",
   templates: {
-    RealEstate: "/proprietes/:id"
+    RealEstate: "/proprietes/:id",
   },
   plugins: [
     {
@@ -18,8 +18,8 @@ module.exports = {
         presetEnvConfig: {},
         shouldPurge: true,
         shouldImport: true,
-        shouldTimeTravel: true
-      }
-    }
-  ]
+        shouldTimeTravel: true,
+      },
+    },
+  ],
 };

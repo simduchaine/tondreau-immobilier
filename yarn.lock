@@ -675,6 +675,16 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
+"@fontsource/fira-sans@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/fira-sans/-/fira-sans-4.1.0.tgz#393579c5c57fcea0d591a17d975e4d4e2b5784c4"
+  integrity sha512-HFwizfn1CUx8/5MpJTkQkUKt+rc4KvZ4Oab7ARY93FtKyeDjfQlRiGmCBpCxFZGzHHhaiGLoQDoVXdS0t41Fxw==
+
+"@fontsource/libre-franklin@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/libre-franklin/-/libre-franklin-4.1.0.tgz#f92aa954ab3f7c78516554a9654d0fb5a74302c6"
+  integrity sha512-LdM733QKGH5Dy052WmHQglJuDLNb12Tewd/lO4DoKpOG3hLD9pysHJfZfDkoJhmd66GZpDr9ZOZlCVLfZaALfA==
+
 "@fullhuman/postcss-purgecss@^1.2.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@fullhuman/postcss-purgecss/-/postcss-purgecss-1.3.0.tgz#d632900d818f4fcf4678e7326923fb838c3e03a7"

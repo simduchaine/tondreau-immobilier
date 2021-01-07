@@ -1,10 +1,13 @@
+//const plugin = require("tailwindcss/plugin");
+
 module.exports = {
   theme: {
     fontFamily: {
-      display: "Work Sans"
+      title: "Libre Franklin",
+      display: "Fira Sans",
     },
     container: {
-      center: true
+      center: true,
     },
     opacity: {
       "0": "0",
@@ -20,11 +23,13 @@ module.exports = {
       "70": ".7",
       "80": ".8",
       "90": ".9",
-      "100": "1"
+      "100": "1",
     },
     extend: {
       colors: {
-        crema: "#D6C5A7"
+        crema: "#D6C5A7",
+        bleuVia: "#002d62",
+        lightBleuVia: "#005a9c",
       },
       spacing: {
         "72": "18rem",
@@ -57,10 +62,20 @@ module.exports = {
         "8/12": "66.666667%",
         "9/12": "75%",
         "10/12": "83.333333%",
-        "11/12": "91.666667%"
-      }
-    }
+        "11/12": "91.666667%",
+      },
+    },
   },
   variants: {},
-  plugins: []
+  plugins: [
+    /* plugin(function({ addUtilities }) {
+      const newUtilities = {
+        ".scroll-smoothly": {
+          scrollBehavior: "smooth",
+        },
+      };
+
+      addUtilities(newUtilities);
+    }), */
+  ],
 };

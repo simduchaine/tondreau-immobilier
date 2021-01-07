@@ -3,7 +3,7 @@
     <div class="max-w-3xl mx-auto pb-10/12 lg:pb-6/12 xl:pb-3/12 relative">
       <g-image class="absolute h-full object-cover w-full" :src="$page.realEstate.image" />
     </div>
-    <div class="bg-crema -mt-32 pt-24">
+    <div class="bg-gray-300 -mt-32 pt-24">
       <div
         class="container relative bg-white w-11/12 md:w-2/3 lg:w-5/12 xl:w-3/12 px-18 py-8 text-center"
       >
