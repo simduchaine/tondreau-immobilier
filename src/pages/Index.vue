@@ -1,8 +1,8 @@
 <template>
   <Layout>
     <section id="intro" class="flex flex-col-reverse xl:flex-row bg-gray-300 px-1/6">
-      <div>
-        <g-image src="~/assets/img/frederick-tondreau-alpha.png" width="510" height="810"></g-image>
+      <div class="pt-24">
+        <g-image src="~/assets/img/frederick-tondreau-alpha-2.png" width="550" height="800" quality="100"></g-image>
       </div>
       
       <div class="px-1/12 py-1/12 xl:w-2/3">
@@ -15,8 +15,9 @@
           class="mb-6"
         >Frédérick œuvre dans le courtage immobilier depuis maintenant 10 ans et est un EXPERT du marché à Québec. En 2020, plus de 60 propriétés ont été vendus par M. Tondreau, et a maintenu un niveau d'excellence à la satisfaction de la clientèle. </p>
         <p class="mb-6">Pour INVESTIR, ACHETER ou VENDRE une propriété, Frédérick Tondreau est LA référence.</p>
+        
       </div>
-        <g-image src="~/assets/img/arrow-down.svg" />
+        <g-image src="~/assets/img/frederick-tondreau-signature.png" width="150" class="pt-8"/>
       </div>
     </section>
 
