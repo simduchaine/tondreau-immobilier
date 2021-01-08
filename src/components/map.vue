@@ -28,9 +28,9 @@ export default {
         this.map = new mapboxgl.Map({
           container: "mapGL",
           style: "mapbox://styles/mapbox/light-v10",
-          minzoom: 11,
-          center: [-71.2793, 46.8711],
-          zoom: 11
+          minzoom: 9,
+          center: [-71.2278016, 46.7536168],
+          zoom: 9
         });
         this.addMarkers();
       }

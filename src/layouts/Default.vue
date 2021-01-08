@@ -1,19 +1,23 @@
 <template>
-  <div class="layout font-display font-light">
-    <header class="header container h-40 flex items-center justify-between">
-      <g-link to="/">
-        <g-image alt="Tondreau Immobilier Logo" src="~/assets/img/logo.png" width="135" />
+  <div class="layout font-display font-light" >
+    <header class="flex h-40 header items-center justify-around">
+      <g-link to="/" class="flex flex-row items-center">
+        <g-image alt="Logo Via Capitale Sélect" src="~/assets/img/logo-viacapitale-equipe.png" width="135" />
+        <span class="px-4 text-2xl font-title">Frédérick Tondreau</span>
       </g-link>
 
       <nav class="nav font-light nav">
-        <g-link class="p-4" to="/proprietes">Propriétés</g-link>
-        <g-link class="p-4" to="/a-propos">À propos</g-link>
-        <g-link class="p-4" to="/contact">Contact</g-link>
+        <a href="/#listing" class="p-4">Propriétés à vendre</a>
+        <a href="/#contact" class="p-4">Contactez-moi</a>
       </nav>
     </header>
     <slot />
-    <footer class="container flex flex-col justify-around items-center mt-16 mb-4">
-      <g-image src="~/assets/img/logo.png" width="150" />
+    <footer class="bg-gray-100 flex flex-col justify-around items-center pt-16 pb-4">
+      <div class="flex flex-row items-center">
+        <g-image src="~/assets/img/logo-viacapitale-equipe.png" alt="Logo Via Capitale Sélect" width="150" />
+        <span class="px-4 text-2xl font-title">Frédérick Tondreau</span>
+      </div>
+      
       <div class="mt-12">
         <a href="tel:+14186553557">(418) 655-3557</a>
       </div>
