@@ -128,7 +128,6 @@ query Estate($id: ID!) {
     }
     dimensions {
       SizeTotal
-      SizeInterior
     }
     URLFr
   }

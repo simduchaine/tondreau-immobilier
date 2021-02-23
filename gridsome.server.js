@@ -69,7 +69,7 @@ module.exports = function(api) {
         },
         dimensions: {
           SizeTotal: item.Land.SizeTotal,
-          SizeInterior: item.Building.SizeInterior,
+          //SizeInterior: item.Building.SizeInterior,
           //privateArea: item.dimensions.privateArea,
           //depth: item.dimensions.depth,
           //width: item.dimensions.width
