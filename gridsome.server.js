@@ -9,15 +9,15 @@ const axios = require("axios");
 const querystring = require("querystring");
 
 module.exports = function(api) {
-  api.loadSource(async actions => {
+  api.loadSource(async (actions) => {
     const { data } = await axios.post(
-      "https://api2.realtor.ca/Listing.svc/PropertySearch_Post",
+      "https://api.realtor.ca/Listing.svc/PropertySearch_Post",
       querystring.stringify({
         individualID: 1944929,
         CultureId: 2,
         ApplicationId: 1,
         PropertySearchTypeId: 1,
-        RecordsPerPage: 100
+        RecordsPerPage: 100,
       })
     );
 
@@ -27,7 +27,7 @@ module.exports = function(api) {
 
     const collection = actions.addCollection({
       typeName: "RealEstate",
-      route: "proprietes/:id"
+      route: "proprietes/:id",
     });
 
     /* const gallery = actions.addCollection({
@@ -65,16 +65,16 @@ module.exports = function(api) {
           //Year: item.building.constructionYear,
           StoriesTotal: Math.round(parseInt(item.Building.StoriesTotal)),
           Type: item.Building.Type,
-          Ownership: item.Property.OwnershipType
+          Ownership: item.Property.OwnershipType,
         },
         dimensions: {
           SizeTotal: item.Land.SizeTotal,
-          SizeInterior: item.Building.SizeInterior
+          SizeInterior: item.Building.SizeInterior,
           //privateArea: item.dimensions.privateArea,
           //depth: item.dimensions.depth,
           //width: item.dimensions.width
         },
-        URLFr: item.RelativeURLFr
+        URLFr: item.RelativeURLFr,
       });
     }
   });
